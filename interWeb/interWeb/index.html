@@ -1,0 +1,74 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Localizar Moto</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<h2>Localizar moto no pátio</h2>
+
+<select id="motoSelect">
+  <option value="192.168.0.10">Moto 01 - BRA2C19 </option>
+  <option value="192.168.0.20">Moto 02 - JHQ8M52 </option>
+  <option value="192.168.0.13">Moto 03 - LVR7D41 </option>
+  <option value="192.168.0.14">Moto 04 - MKP3F87 </option>
+  <option value="192.168.0.15">Moto 05 - TZU5K10 </option>
+</select>
+<br><br>
+
+<!-- Passo 1: Ativar ESP32 -->
+<button onclick="simularAtivacao()">Simular ativação do ESP32</button>
+
+<!-- Status -->
+<p id="status">Aguardando ação...</p>
+
+<!-- LED simulado -->
+<div id="led" style="width:50px;height:50px;background-color:gray;border-radius:50%;margin-top:10px;"></div>
+
+<!-- Passo 2: Escolha se a moto foi encontrada -->
+<div id="respostaBtns" style="display:none; margin-top: 10px;">
+  <p> A moto foi encontrada?</p>
+  <button onclick="motoEncontrada()">✅ Sim</button>
+  <button onclick="motoNaoEncontrada()">❌ Não</button>
+</div>
+
+<script>
+  let audio;
+
+  function simularAtivacao() {
+    const status = document.getElementById("status");
+    const led = document.getElementById("led");
+
+    status.innerText = "✅ ESP32 ativado! Sinal sonoro emitido...";
+    led.style.backgroundColor = "lime";
+
+    // Simula som
+    audio = new Audio("https://www.soundjay.com/button/beep-07.wav");
+    audio.loop = true;
+    audio.play();
+
+    // Mostra botões de escolha
+    document.getElementById("respostaBtns").style.display = "block";
+  }
+
+  function motoEncontrada() {
+    const status = document.getElementById("status");
+    const led = document.getElementById("led");
+
+    led.style.backgroundColor = "gray";
+    if (audio) audio.pause();
+
+    status.innerText = "✅ Moto foi localizada com sucesso!";
+    document.getElementById("respostaBtns").style.display = "none";
+  }
+
+  function motoNaoEncontrada() {
+    const status = document.getElementById("status");
+    const led = document.getElementById("led");
+
+    led.style.backgroundColor = "gray";
+    if (audio) audio.pause();
+
+    status.innerText = "❌ Não foi possível localizar a moto.";
+    document.getElementById("respostaBtns").style.display = "none";
+  }
+</script>
+
