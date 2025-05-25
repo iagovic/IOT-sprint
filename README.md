@@ -1,5 +1,6 @@
 	🏍️ Localizador de Motos com IoT
-LINK para o video https://youtu.be/2tJ4KAqsfMc
+LINK para o video https://youtu.be/2tJ4KAqsfMc.
+
 Este projeto tem como objetivo facilitar a localização de motos no pátio da Motu, utilizando um dispositivo sonoro e visual baseado em ESP32. A proposta foi desenvolvida para a entrega da disciplina de Internet das Coisas (IoT).
 
 📌 Motivação
